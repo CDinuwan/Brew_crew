@@ -44,15 +44,23 @@ class _SignInState extends State<SignIn> {
                   height: 20.0,
                 ),
                 TextFormField(
-                  obscureText: true,
                   validator: (val) => val.isEmpty ? 'Enter an email' : null,
                   onChanged: (val) {
-                    setState(() => password = val);
+                    setState(() => email = val);
                   },
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
+                TextFormField(
+                  obscureText: true,
+                  validator: (val) =>
+                      val.length < 6 ? 'Enter a password 6+ chars long!' : null,
+                  onChanged: (val) {
+                    setState(() => password = val);
+                  },
+                ),
+                SizedBox(height: 20.0),
                 RaisedButton(
                   color: Colors.pink[400],
                   child: Text(
