@@ -16,6 +16,7 @@ class _SignInState extends State<SignIn> {
   //text field state
   String email = '';
   String password = '';
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +70,23 @@ class _SignInState extends State<SignIn> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      print(email);
-                      print(password);
+                      print('valid');
+                      dynamic result = await _auth.signInWithEmailAndPassword(
+                          email, password);
+                      if (result == null) {
+                        setState(() =>
+                            error = 'Could not sign in with those credentials');
+                      }
                     }
                   },
-                )
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                ),
               ],
             ),
           )),

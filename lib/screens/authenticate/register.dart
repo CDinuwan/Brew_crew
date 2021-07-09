@@ -39,6 +39,7 @@ class __RegisterState extends State<Register> {
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
             child: Column(
+              key: _formKey,
               children: <Widget>[
                 SizedBox(
                   height: 20.0,
